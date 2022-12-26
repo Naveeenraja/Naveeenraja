@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/07555236b8.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="static\dashboard.css">
+    <script src="static\dashboard.js"></script>
+    <title>Document</title>
+    <style>
+      h5{
+        font-size: small;
+        font-style: normal;
+        color: aliceblue;
+        font-family: emoji;
+        margin-left: 29%;
+        margin-top: -8%;
+      }
+      h6{
+        margin-left: 0.5%;
+    margin-top: 0.5%;
+      }
+    </style>
+</head>
+<body>
+  <!-- Bootstrap NavBar -->
+<nav class="navbar navbar-expand-md navbar-dark bg-primary">
+  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarAdmin" aria-controls="navbarAdmin" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <i class="fa-sharp fa-solid fa-house fa-xl"></i>
+  <h6>Home</h6>
+  <form class="d-flex" style="margin-left: 74%;">
+    <i class="fa-solid fa-magnifying-glass fa-l"></i>
+      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success" style="color: whitesmoke;
+      border-color: lawngreen;" type="submit">Search</button>
+    </form>
+      <!-- </li> -->
+      <!-- Dieses Menü ist bei größeren Geräten mit d-sm-none ausgeblendet.
+            Die Seitenleiste ist nicht für kleinere Bildschirme geeignet, daher kann dieses Dropdown-Menü alle nützlichen Seitenleisten-Elemente ausschließlich für kleinere Bildschirme enthalten -->
+      <!-- <li class="nav-item dropdown d-sm-block d-md-none">
+        <a class="nav-link dropdown-toggle" href="#" id="smallerscreenmenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Menu </a>
+        <div class="dropdown-menu" aria-labelledby="smallerscreenmenu">
+          <a class="dropdown-item" href="#top">Dashboard</a>
+          <a class="dropdown-item" href="#top">Profile</a>
+          <a class="dropdown-item" href="#top">Tasks</a>
+          <a class="dropdown-item" href="#top">Etc..</a>
+        </div> -->
+      <!-- </li>Menü für kleinere Geräte END -->
+    </ul>
+  </div>
+</nav><!-- NavBar END -->
+<!-- Bootstrap row -->
+<div class="row" id="body-row">
+  <!-- Seitenleiste -->
+  <div id="sidebar-container" class="sidebar-expanded d-none d-md-block">
+    
+    <i class="fa-solid fa-user fa-xl" style="margin-left: 15%; margin-top: 10%; color: darkgrey;"></i>
+    <h5>{{email}}</h5>
+    <!-- d- * verbirgt die Sidebar in kleineren Geräten. Die Einträge können im Navbar-Menü gespeichert werden -->
+    <!-- Bootstrap-Listengruppe -->
+    <ul class="list-group" style="margin-top: 28%;">
+      <!-- Trennzeichen mit Titel -->
+      <li class="list-group-item sidebar-separator-title text-muted d-flex align-items-center menu-collapsed" style="margin-top: 16%;">
+                <small style="    margin-top: 0%;
+                margin-left: 9%; color: wheat;">MAIN MENU</small>
+            </li>
+      <!-- / END Separator -->
+      <!-- Menü mit Untermenü -->
+      <a href="#submenu1" data-toggle="collapse" aria-expanded="false" class="bg-dark list-group-item list-group-item-action flex-column align-items-start">
+        <div class="d-flex w-100 justyfy-content-start align-items-center">
+          <span class="fas fa-tachometer-alt fa-fw mr-3"></span>
+          <span class="menu-collapsed">Dashboard</span>
+          <!-- <span class="fas fa-angle-down ml-auto"></span> -->
+        </div>
+      </a>
+      <!-- Inhalt des Untermenüs -->
+      <!-- <div id="submenu1" class="collapse sidebar-submenu">
+        <a href="#" class="list-group-item list-group-item-action bg-dark text-white">
+          <span class="menu-collapsed">Charts</span>
+        </a>
+        <a href="#" class="list-group-item list-group-item-action bg-dark text-white">
+          <span class="menu-collapsed">Reports</span>
+        </a>
+        <a href="#" class="list-group-item list-group-item-action bg-dark text-white">
+          <span class="menu-collapsed">Tables</span>
+        </a>
+      </div> -->
+      <a href="#submenu2" data-toggle="collapse" aria-expanded="false" class="bg-dark list-group-item list-group-item-action flex-column align-items-start">
+        <div class="d-flex w-100 justify-content-start align-items-center">
+         <span class="fa-solid fa-list-check mr-3" style="margin-left: 1%;"></span>
+         <span class="menu-collapsed" style=" margin-left: 1%;">Tasks</span>
+         <span class="fas fa-angle-down ml-auto"></span>
+        </div>
+       </a>
+      <!-- Inhalt des Untermenüs -->
+      <div id='submenu2' class="collapse sidebar-submenu">
+                <a href="#" class="list-group-item list-group-item-action bg-dark text-white">
+                    <span class="menu-collapsed">Test</span>
+                </a>
+                <a href="#" class="list-group-item list-group-item-action bg-dark text-white">
+                    <span class="menu-collapsed">Mark</span>
+                </a>
+            </div>
+            <a href="#" class="bg-dark list-group-item list-group-item-action">
+                <div class="d-flex w-100 justify-content-start align-items-center">
+                  <span class="fa-solid fa-circle-info mr-3" style="margin-left: 1%;"></span>
+                    <span class="menu-collapsed" style="margin-left: 2%;">About</span>
+                </div>
+            </a>
+            
+            <!-- <a href="#" class="bg-dark list-group-item list-group-item-action">
+                <div class="d-flex w-100 justify-content-start align-items-center">
+                    <span class="fas fa-calendar fa-fw mr-3"></span>
+                    <span class="menu-collapsed">Calendar</span>
+                </div> -->
+            </a>
+            <a href="#" class="bg-dark list-group-item list-group-item-action">
+                <div class="d-flex w-100 justify-content-start align-items-center">
+                    <span  class="fa-solid fa-question mr-3" style="margin-left: 1.5%;"></span>
+                    <span class="menu-collapsed" style="margin-left: 5%;">Help<span>
+                </div>
+            </a>
+            
+            <a href="#" class="bg-dark list-group-item list-group-item-action">
+                <div class="d-flex w-100 justify-content-start align-items-center">
+                    <span class="fa-solid fa-arrow-right-from-bracket mr-3"span>
+                    <span class="menu-collapsed" style="font-family: initial;">Logout</span>
+                </div>
+            </a>
+            <a href="/caution" data-toggle="sidebar-colapse" class="bg-dark list-group-item list-group-item-action d-flex align-items-center" style="margin-top: 47%;">
+                <div class="d-flex w-100 justify-content-start align-items-center" style=" margin-left: 39%;">
+                    <span id="collapse-icon" class="fa-solid fa-users-viewfinder mr-3" style="margin-left: -15%;"></span>
+                    <span id="collapse-text" class="menu-collapsed" style="margin-left: 2%;
+                    font-size: smaller;">View students</span>
+                </div>
+            </a>
+    
+            </div>
+        </div>
+    </div><!-- Main Col END -->
+</div><!-- body-row END -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+</body>
+</html>
