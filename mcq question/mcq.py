@@ -1,8 +1,8 @@
 from flask import Flask,render_template,request,redirect
 
 import data.mcqutil as mcq_utils
-file ="mcq question\studreg.json"
-file1 = "mcq question\mcq.json"
+file ="studreg.json"
+file1 = "mcq.json"
 app=Flask(__name__)
 
 @app.route("/", methods=["POST" , "GET"])
@@ -47,6 +47,7 @@ def reg():
 @app.route("/dashboard", methods=["GET" , "POST"])
 def dash():
     data = mcq_utils.read_json(file)
+    message=""
     if request.method=="POST":
         email=request.form["Email"]
         password=request.form["Password"]
@@ -55,7 +56,7 @@ def dash():
             if i["Email"]==email :
                 if i["Password"]==password:
                     return render_template("dashboard.html", data=data["student registration"], email=email)
-        return render_template("login.html" ,message=message)
+    return render_template("login.html" ,message=message)
 
 @app.route("/caution", methods=["POST", "GET"])
 def caution():
