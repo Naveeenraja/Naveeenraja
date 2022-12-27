@@ -1,7 +1,7 @@
 from flask import Flask,render_template,request,redirect
 
 import data.mcqutil as mcq_utils
-file ="studreg.json"
+file ="Naveeenraja\mcq question\studreg.json"
 file1 = "mcq.json"
 app=Flask(__name__)
 
@@ -48,10 +48,10 @@ def reg():
 def dash():
     data = mcq_utils.read_json(file)
     message=""
-    if request.method=="POST":
+    if request.method=="POST":                                                   
         email=request.form["Email"]
         password=request.form["Password"]
-        message="your password or email incorrect"
+        message="your password or email incorrect"                   
         for i in data["student registration"] : 
             if i["Email"]==email :
                 if i["Password"]==password:
@@ -71,7 +71,24 @@ def cau():
             return render_template("mcq2.html",  data=data["student registration"]) 
         else:
             return render_template("caution.html",mesage=mesage)
-    
+
+@app.route("/forgot" , methods=["POST" , "GET"])  
+def forgot():
+    return render_template("forgot.html")
+
+@app.route("/sentotp" , methods=["POST" , "GET"])
+def otp():
+    data = mcq_utils.read_json(file)
+    num="0105"
+    mes=""
+    if request.method=="POST":
+        email=request.form["email"]
+        mes="your email id is incorrect / did not register / dont recognize"
+        for i in data["student registration"] : 
+            if i["Email"]==email:
+                return render_template("otp.html", num=num)
+    return render_template("forgot.html" , mes=mes)
+
        
       
     

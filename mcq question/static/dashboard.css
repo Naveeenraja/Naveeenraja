@@ -3,7 +3,7 @@
   margin-right:0;
 }
 #sidebar-container {
-  min-height: 89vh;   
+  min-height: 92vh;   
   background-color: #333;
   padding: 0;
 }
@@ -60,4 +60,15 @@ font-family: FontAwesome;
 display: inline;
 text-align: right;
 padding-left: 10px;
+}
+
+body{
+  background-image:  url("/static/img/1234.jpg");
+   /* Full height */
+   height: 100%;
+
+   /* Center and scale the image nicely */
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: cover;
 }
