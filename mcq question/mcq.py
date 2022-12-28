@@ -55,7 +55,7 @@ def dash():
         for i in data["student registration"] : 
             if i["Email"]==email :
                 if i["Password"]==password:
-                    return render_template("dashboard.html", data=data["student registration"], email=email)
+                    return render_template("home.html", data=data["student registration"], email=email)
     return render_template("login.html" ,message=message)
 
 @app.route("/caution", methods=["POST", "GET"])
