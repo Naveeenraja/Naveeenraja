@@ -37,17 +37,17 @@
     if (str === "about"){
         $('#content').load("about.html");
     }
-    else if (str=== "profile"){
+    else if (str=== "dashboard"){
 
-        $('#content').load("profile.html");
+        $('#content').load("dashboard.html");
     }
-    else if (str=== "bookmark"){
+    else if (str=== "test"){
 
-        $('#content').load("bookmark.html");
+        $('#content').load("test.html");
     }
-    else if (str=== "messages"){
+    else if (str=== "mark"){
 
-        $('#content').load("messages.html");
+        $('#content').load("mark.html");
     }
     else if (str=== "files"){
         $('#content').load("files.html");
