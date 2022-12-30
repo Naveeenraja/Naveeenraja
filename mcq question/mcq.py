@@ -1,4 +1,4 @@
-from flask import Flask,render_template,request,redirect
+from flask import Flask,render_template,request,redirect, url_for
 
 import data.mcqutil as mcq_utils
 file ="mcq question\studreg.json"
@@ -6,9 +6,24 @@ file1 = "mcq.json"
 app=Flask(__name__)
 
 @app.route("/", methods=["POST" , "GET"])
-
 def index():
     return render_template("login.html")
+
+@app.route("/tab/<page>", methods=["POST" , "GET"])
+def about(page):
+    if page=="about":
+        return render_template("about.html")
+    if page=="dashboard":
+        return render_template("dashboard.html")
+    if page=="mark":
+        return render_template("mark.html")
+    if page=="about":
+        return render_template("about.html")
+    if page=="test":
+        return render_template("test.html")
+    if page=="help":
+        return render_template("help.html")
+    return redirect("/dashboard")
 @app.route("/login", methods= ["POST","GET"])
 def login():
     data = mcq_utils.read_json(file)
@@ -71,6 +86,7 @@ def cau():
             return render_template("mcq2.html",  data=data["student registration"]) 
         else:
             return render_template("caution.html",mesage=mesage)
+    return render_template("home.html")     
 
 @app.route("/forgot" , methods=["POST" , "GET"])  
 def forgot():

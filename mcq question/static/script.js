@@ -35,26 +35,27 @@
     var str= this.id
     console.log(str)
     if (str === "about"){
-        $('#content').load("about.html");
+        $('#content').load("/tab/about");
     }
     else if (str=== "dashboard"){
 
-        $('#content').load("dashboard.html");
+        $('#content').load("/tab/dashboard");
     }
     else if (str=== "test"){
 
-        $('#content').load("test.html");
+        $('#content').load("/tab/test");
     }
     else if (str=== "mark"){
 
-        $('#content').load("mark.html");
+        $('#content').load("/tab/mark");
     }
-    else if (str=== "files"){
-        $('#content').load("files.html");
+    else if (str=== "help"){
+        $('#content').load("/tab/help");
 
     }
     else if (str=== "stats"){
-        $('#content').load("stats.html");
+        $('#content').load("/tab/status");
+    
     }
     }
     }
