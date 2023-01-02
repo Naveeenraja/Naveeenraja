@@ -1,7 +1,7 @@
 from flask import Flask,render_template,request,redirect, url_for,session
 from flask_session import Session
 import data.mcqutil as mcq_utils
-file ="mcq question/studreg.json"
+file ="studreg.json"
 file1 = "mcq.json"
 app=Flask(__name__)
 app.config["SECRET_KEY"]="somekey"
@@ -80,36 +80,39 @@ def reg():
 
 @app.route("/dashboard", methods=["GET" , "POST"])
 def dash():
-    data = mcq_utils.read_json(file)
-    message=""
-    if request.method=="POST":                                                   
-        email=request.form["Email"]
-        password=request.form["Password"]
-        message="incorrect password / email" 
-                      
-        for i in data["student registration"] : 
-            if i["Email"]==email :
-                session["Email"]=i["Email"]
-                if i["Password"]==password:
-                    session["Password"]=i["Password"]
-                    session["Firstname"]=i["Firstname"]
-                    return render_template("home.html", data=data["student registration"], email=email )
-    return render_template("login.html" ,message=message)
+    if check_session():
+        data = mcq_utils.read_json(file)
+        message=""
+        if request.method=="POST":                                                   
+            email=request.form["Email"]
+            password=request.form["Password"]
+            message="incorrect password / email" 
+                        
+            for i in data["student registration"] : 
+                if i["Email"]==email :
+                    session["Email"]=i["Email"]
+                    if i["Password"]==password:
+                        session["Password"]=i["Password"]
+                        session["Firstname"]=i["Firstname"]
+                        return render_template("home.html", data=data["student registration"], email=email,fname=session["Firstname"] )
+        return render_template("login.html" ,message=message)
 
 @app.route("/caution", methods=["POST", "GET"])
 def caution():
-    return render_template("caution.html")  
+    if check_session():
+        return render_template("caution.html")  
 @app.route("/caution2" , methods=["POST", "GET"])  
 def cau():
-    data = mcq_utils.read_json(file)
-    if request.method=="POST":
-        passwrd=request.form["pasword"] 
-        mesage="only owner / admin can open this section" 
-        if passwrd=="rnaveen2520@":
-            return render_template("mcq2.html",  data=data["student registration"]) 
-        else:
-            return render_template("caution.html",mesage=mesage)
-    return render_template("home.html")     
+    if check_session():
+        data = mcq_utils.read_json(file)
+        if request.method=="POST":
+            passwrd=request.form["pasword"] 
+            mesage="only owner / admin can open this section" 
+            if passwrd=="rnaveen2520@":
+                return render_template("mcq2.html",  data=data["student registration"]) 
+            else:
+                return render_template("caution.html",mesage=mesage)
+        return render_template("home.html")     
 
 @app.route("/forgot" , methods=["POST" , "GET"])  
 def forgot():
@@ -117,16 +120,28 @@ def forgot():
 
 @app.route("/sentotp" , methods=["POST" , "GET"])
 def otp():
-    data = mcq_utils.read_json(file)
-    num="0105"
-    mes=""
-    if request.method=="POST":
-        email=request.form["email"]
-        mes="your email id is incorrect / did not register / dont recognize"
-        for i in data["student registration"] : 
-            if i["Email"]==email:
-                return render_template("otp.html", num=num)
-    return render_template("forgot.html" , mes=mes)
-
+    if check_session():
+        data = mcq_utils.read_json(file)
+        num="0105"
+        mes=""
+        if request.method=="POST":
+            email=request.form["email"]
+            mes="your email id is incorrect / did not register / dont recognize"
+            for i in data["student registration"] : 
+                if i["Email"]==email:
+                    return render_template("otp.html", num=num)
+                else:
+                    return render_template("forgot.html" , mes=mes)
+        return render_template("login.html")
+    
+@app.route("/help" , methods=["POST" , "GET"])
+def help():
+    if check_session():
+        data = mcq_utils.read_json(file)
+        for i in data["student registration"]:
+            session["Firstname"]=i["Firstname"]
+            return render_template("help.html", fname=session["Firstname"])
+            
+        
 if __name__=="__main__":
     app.run(debug=True)   
