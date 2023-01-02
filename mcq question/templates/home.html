@@ -17,6 +17,12 @@
     
 </head>
     <body id="body-pd">
+        <div class="banner">
+            <!-- <video autoplay muted loop>
+                <source src="/static/img/3d sea-ocean waves animation.mp4">
+
+            </video> -->
+        </div>
         <header class="header bg-dark" id="header">
         <nav id="navbar_top" class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="header">
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarAdmin" aria-controls="navbarAdmin" aria-expanded="false" aria-label="Toggle navigation">
@@ -25,7 +31,7 @@
               <i class="fa-sharp fa-solid fa-house fa-xl " style="color: blue;
               margin-left: -13px;
               margin-top: -17px;
-          }"></i>
+          "></i>
               <h6 class="text-light ml-5 " id="header">Home</h6>
               <form class="d-flex" style="margin-left: 74%;">
                 <!-- <i class="fa-solid fa-magnifying-glass fa-l">"Search"</i> -->
@@ -104,7 +110,7 @@
                             </div>
                         </a>
                         
-                        <a href="#" class="bg-dark list-group-item list-group-item-action nav_link" id="logout">
+                        <a href="/logout" class="bg-dark list-group-item list-group-item-action nav_link" id="logout">
                             <div class="d-flex w-100 justify-content-start align-items-center">
                                 <span class="fa-solid fa-arrow-right-from-bracket mr-3" style="margin-left: -10px;"></span>
                                 <span class="menu-collapsed" style='font-family: ui-sans-serif; font-weight: 100; margin-left: 5%; margin-left: 13px;'>Logout</span>
@@ -121,9 +127,40 @@
                     </div>
             </nav>
         </div>
+        <div class="container">
+            <img src="\static\img\letter a.jpg" >
+            <img src="\static\img\letter b.jpg" >
+            <img src="\static\img\letter c.jpg" >
+            <img src="\static\img\letter d.jpg" >
+            <img src="\static\img\letter a.jpg" >
+            <img src="\static\img\letter b.jpg" >
+            <img src="\static\img\letter c.jpg" >
+            <img src="\static\img\letter d.jpg" >
+      
+            
+          </div>
         <!--Container Main start-->
         <div class="height-100" id="content">
-            <h4>Main Components</h4>
+            <div class="card">
+                <div class="imgBox">
+                  <div class="bark"></div>
+                  <img src="static\img\mcq11.jpg" style="margin-top: -3px;
+                  width: 324px;
+                  height: 938px;">
+                </div>
+                <div class="details">
+                  <h4 class="color1">welcome</h2>
+                  <h4 class="color2 margin" style="margin-top:35px;">{{fname}}</h3>
+                    <br>
+                    <br>
+                    <p style="margin-top:73px;">To know what you know and </p>
+                    <p>what you do not know,</p>
+                    <p>that is true knowledge</p>
+        
+                </div>
+                <div>
+                    
+              </div>
         </div>
         <!--Container Main end-->
         <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

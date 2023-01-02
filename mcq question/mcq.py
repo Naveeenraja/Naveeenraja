@@ -1,9 +1,28 @@
-from flask import Flask,render_template,request,redirect, url_for
-
+from flask import Flask,render_template,request,redirect, url_for,session
+from flask_session import Session
 import data.mcqutil as mcq_utils
 file ="mcq question\studreg.json"
 file1 = "mcq.json"
 app=Flask(__name__)
+app.config["SECRET_KEY"]="somekey"
+app.config["SESSION_PERMANENT"]=False
+app.config["SESSION_TYPE"]="filesystem"
+Session(app)
+
+def check_session():
+    if len(session.keys())>0:
+        return True
+    else:
+        return False
+
+@app.route("/logout" , methods=["POST" , "GET"]) 
+def logout():
+    if check_session():
+        session.pop("Email" , None)
+        session.pop("Firstname" , None) 
+    return redirect("/")      
+
+
 
 @app.route("/", methods=["POST" , "GET"])
 def index():
@@ -66,11 +85,15 @@ def dash():
     if request.method=="POST":                                                   
         email=request.form["Email"]
         password=request.form["Password"]
-        message="your password or email incorrect"                   
+        message="incorrect password / email" 
+                      
         for i in data["student registration"] : 
             if i["Email"]==email :
+                session["Email"]=i["Email"]
                 if i["Password"]==password:
-                    return render_template("home.html", data=data["student registration"], email=email)
+                    session["Password"]=i["Password"]
+                    session["Firstname"]=i["Firstname"]
+                    return render_template("home.html", data=data["student registration"], email=email )
     return render_template("login.html" ,message=message)
 
 @app.route("/caution", methods=["POST", "GET"])

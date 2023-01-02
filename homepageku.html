@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body{
+      width: 100%;
+      height: 100vh;
+      background-image: url("1672121731096.jpg");
+      background-size: cover;
+      
+    }
+    .container img{
+      width: 2%;
+      animation: container 7s linear infinite;
+    }
+    .container{
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      position: absolute;
+      bottom: -70px;
+    }
+    @keyframes container{
+      0%{
+        transform: translateY(0);
+        opacity: 0;
+      }
+      50%{
+        
+        opacity: 1;
+      }
+      70%{
+       
+        opacity: 1;
+      }
+      100%{
+        transform: translateY(-80vh);
+        opacity: 0;
+      }      
+    }
+    .container img:nth-child(1){
+      animation-delay: 1s;
+    }
+    .container img:nth-child(2){
+      animation-delay: 2.5s;
+    }
+    .container img:nth-child(3){
+      animation-delay: 3.5s;
+    }
+    .container img:nth-child(4){
+      animation-delay: 4.5s;
+    }
+    .container img:nth-child(5){
+      animation-delay: 7s;
+    }
+    .container img:nth-child(6){
+      animation-delay: 8s;
+    }
+    .container img:nth-child(7){
+      animation-delay: 9s;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <div class="container">
+      <img src="/letter a.png" >
+      <img src="/letter b.png" >
+      <img src="/letter c.png" >
+      <img src="/letter d.jpg" >
+      <img src="/letter m.jpg" >
+      <img src="/letter c.png" >
+      <img src="/letter q.jpg" >
+
+      
+    </div>
+  </div>
+</body>
+</html>
