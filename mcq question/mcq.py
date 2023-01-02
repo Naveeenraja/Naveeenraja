@@ -1,7 +1,7 @@
 from flask import Flask,render_template,request,redirect, url_for,session
 from flask_session import Session
 import data.mcqutil as mcq_utils
-file ="mcq question\studreg.json"
+file ="studreg.json"
 file1 = "mcq.json"
 app=Flask(__name__)
 app.config["SECRET_KEY"]="somekey"
@@ -128,8 +128,5 @@ def otp():
                 return render_template("otp.html", num=num)
     return render_template("forgot.html" , mes=mes)
 
-       
-      
-    
 if __name__=="__main__":
     app.run(debug=True)   
