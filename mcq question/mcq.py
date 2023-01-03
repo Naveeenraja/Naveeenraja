@@ -1,7 +1,7 @@
 from flask import Flask,render_template,request,redirect, url_for,session
 from flask_session import Session
 import data.mcqutil as mcq_utils
-file ="mcq question\studreg.json"
+file ="Naveeenraja\mcq question\studreg.json"
 file1 = "mcq.json"
 app=Flask(__name__)
 app.config["SECRET_KEY"]="somekey"
@@ -33,7 +33,7 @@ def about(page):
     if page=="about":
         return render_template("about.html")
     if page=="dashboard":
-        return render_template("dashboard.html")
+        return render_template("dashboard.html", email=session["Email"], fname=session["Firstname"], lname=session["Lastname"], dob=session["DOB"], gender=session["Gender"])
     if page=="mark":
         return render_template("mark.html")
     if page=="about":
@@ -41,7 +41,7 @@ def about(page):
     if page=="test":
         return render_template("test.html")
     if page=="help":
-        return render_template("help.html")
+        return render_template("help.html" , fname=session["Firstname"])
     return redirect("/dashboard")
 @app.route("/login", methods= ["POST","GET"])
 def login():
@@ -80,7 +80,7 @@ def reg():
 
 @app.route("/dashboard", methods=["GET" , "POST"])
 def dash():
-    if check_session():
+    # if check_session():
         data = mcq_utils.read_json(file)
         message=""
         if request.method=="POST":                                                   
@@ -89,6 +89,10 @@ def dash():
             message="incorrect password / email" 
             for i in data["student registration"] : 
                 session["Firstname"]=i["Firstname"]
+                session["Email"]=i["Email"]
+                session["Lastname"]=i["Lastname"]
+                session["DOB"]=i["DOB"]
+                session["Gender"]=i["Gender"]
                 if i["Email"]==email :
                     if i["Password"]==password:
                         return render_template("home.html", data=data["student registration"], email=email,fname=session["Firstname"] )
