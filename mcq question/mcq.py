@@ -1,7 +1,7 @@
 from flask import Flask,render_template,request,redirect, url_for,session
 from flask_session import Session
 import data.mcqutil as mcq_utils
-file ="studreg.json"
+file ="mcq question\studreg.json"
 file1 = "mcq.json"
 app=Flask(__name__)
 app.config["SECRET_KEY"]="somekey"
@@ -87,13 +87,10 @@ def dash():
             email=request.form["Email"]
             password=request.form["Password"]
             message="incorrect password / email" 
-                        
             for i in data["student registration"] : 
+                session["Firstname"]=i["Firstname"]
                 if i["Email"]==email :
-                    session["Email"]=i["Email"]
                     if i["Password"]==password:
-                        session["Password"]=i["Password"]
-                        session["Firstname"]=i["Firstname"]
                         return render_template("home.html", data=data["student registration"], email=email,fname=session["Firstname"] )
         return render_template("login.html" ,message=message)
 

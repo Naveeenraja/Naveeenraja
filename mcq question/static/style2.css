@@ -60,3 +60,7 @@ h5{
 .nav_link{
     margin-left: -26px;
 }       
+.form-floating>.form-control, .form-floating>.form-select {
+    padding: 1rem;
+    height: 41px;
+}
