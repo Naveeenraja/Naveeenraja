@@ -1,7 +1,7 @@
 from flask import Flask,render_template,request,redirect, url_for,session
 from flask_session import Session
 import data.mcqutil as mcq_utils
-file ="Naveeenraja\mcq question\studreg.json"
+file ="mcq question\studreg.json"
 file1 = "mcq.json"
 app=Flask(__name__)
 app.config["SECRET_KEY"]="somekey"

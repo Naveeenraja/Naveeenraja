@@ -39,6 +39,16 @@
          "Email": "test@test.com",
          "Username": "Naveen Raja",
          "Password": "test"
+      },
+      {
+         "s_no": 5,
+         "Firstname": "varshita",
+         "Lastname": "kalaivani",
+         "DOB": "1997-06-26",
+         "Gender": "female",
+         "Email": "varu26@gmail.com",
+         "Username": "varu26",
+         "Password": "varu26@"
       }
    ]
 }
