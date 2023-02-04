@@ -3,4 +3,4 @@ COPY . /python-flask
 WORKDIR /python-flask
 RUN pip install flask
 RUN pip install flask_session 
-ENTRYPOINT ['python','mcq.py']
+ENTRYPOINT ["python","mcq.py"]
